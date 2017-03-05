@@ -85,10 +85,3 @@ for line in list:
 for i in ip_list:
     print(i.ip, i.request, i.status)
 
-#test
-
-
-jkvgcxsfgsxcfgsxdfdsa
-
-
-fsd
