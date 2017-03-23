@@ -1,4 +1,5 @@
 import requests
+from bot import  conf
 from requests.auth import HTTPBasicAuth
 import re
 import time
@@ -44,4 +45,4 @@ while True:
       new_old=new_tmp
       rep_old=rep_tmp
  time.sleep(60)
-
+ print(conf.user)
