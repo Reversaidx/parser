@@ -8,7 +8,7 @@ ip=re.compile(r'.*IPADDR0=(?P<ip>\S+).*')
 for i in ifcfglist:
     file=open(i,"r")
     str=file.read()
-    iplist.append(ip.findall(str))
+    iplist.append(ip.  (str))
 
 for i in iplist:
     if i:
