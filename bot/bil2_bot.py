@@ -15,11 +15,12 @@ def auth():
        "username":conf.user,
        'password':conf.passw
        }
- url="https://5.61.34.118/test/admin/supportcenter.php"
+ url="https://cp.mrhost.biz/admin/supportcenter.php"
  headers={'user-agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'}
  session = requests.Session()
- r=session.post('https://5.61.34.118/test/admin/dologin.php', auth=HTTPBasicAuth(conf.httpuser,conf.httppass), data=param,headers=headers,verify=False)
- r=session.get(url,auth=HTTPBasicAuth(conf.httpuser,conf.httppass),  cookies=r.cookies,headers=headers,verify=False)
+ r=session.post('https://cp.mrhost.biz/admin/dologin.php', auth=HTTPBasicAuth(conf.httpuser,conf.httppass), data=param,headers=headers)
+ r=session.get(url,auth=HTTPBasicAuth(conf.httpuser,conf.httppass),  cookies=r.cookies,headers=headers)
+ #print(r.text)
  return r
 
 #функция парсинга нужных значений
@@ -27,6 +28,7 @@ def pars(r):
 
  soup=BeautifulSoup(r.text,"html.parser")
  link =soup.findAll('div', 'stat',text="")
+ print(link)
  reg=re.compile(r'<.*>(?P<num>\d+)<.*')
  new=reg.findall(str(link[0]))
  rep=reg.findall(str(link[1]))
@@ -36,13 +38,15 @@ new_old,rep_old=pars(auth())
 while True:
 
  new_tmp,rep_tmp=pars(auth())
+#если количество тикетов стало больше нужно реагировать
  if new_tmp>new_old or rep_tmp>rep_old:
       print(new_tmp,rep_tmp)
       bot.send_message(conf.chatid, "BILLING 2 NEW TICKET")
       new_old=new_tmp
       rep_old=rep_tmp
+#если количество тикетов и ответов стало меньше нужно сбросить значения, е
  if new_old<new_tmp or rep_old<rep_old:
       new_old=new_tmp
       rep_old=rep_tmp
+      print(new_old,rep_old)
  time.sleep(60)
- print(conf.user)
