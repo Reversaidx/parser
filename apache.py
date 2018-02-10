@@ -59,7 +59,7 @@ ip_list=[]#список объектов
 def down(ip,passw,logname):
     s=paramiko.SSHClient()
     s.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    s.connect(hostname="5.61.34.118",port=22,username="root",password="ipoPA4nDEg")
+    s.connect(hostname="5.61.34.118",port=22,username="root",password="")
     #kurwa=s.exec_command("ifconfig")
     stdin, stdout, stderr = s.exec_command('tail -n 1000 /var/www/httpd-logs/kurwakurwa228.tk.access.log')
     global list
