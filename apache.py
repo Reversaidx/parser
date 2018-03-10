@@ -1,4 +1,5 @@
 import re, paramiko, os
+
 str1='5.255.251.2 - - [01/Mar/2017:05:38:16 +0300] "GET /e-store/xml_catalog/38/262/ HTTP/1.0" 200 6867 "-" "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)"'
 str2='5.255.251.2 - - [01/Mar/2017:05:38:20 +0300] "GET /e-store/xml_catalog/22/261/ HTTP/1.0" 200 6954 "-" "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)"'
 str3='153.36.233.35 - - [01/Mar/2017:11:52:28 +0300] "GET / HTTP/1.0" 301 305 "-" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)"'
